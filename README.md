@@ -1,16 +1,17 @@
 # FK Teplice
 
 - Instalace závislostí
-`npm install`
+  > `npm install`
 
 - Build resourců
-`npm run build`
+  > `npm run build`
 
 - Kontinuální build resourců
-`npm run watch`
+  > `npm run watch`
 
 - Spuštění migrací
-`dotnet ef database update`
+  > `dotnet ef database update`\
+  > Zároveň vytvoří databázi, pokud neexistuje (app.db)
 
 - Spuštění projektu
-`dotnet run`
+  > `dotnet run`
