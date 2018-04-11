@@ -1,0 +1,25 @@
+{
+  "name": "fkteplice",
+  "version": "1.0.0",
+  "description": "FK Teplice web application",
+  "main": "index.js",
+  "dependencies": {
+    "admin-lte": "^2.4.3"
+  },
+  "devDependencies": {
+    "admin-lte": "^2.4.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noxxic/FK-Teplice_WebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Noxxic/FK-Teplice_WebApp/issues"
+  },
+  "homepage": "https://github.com/Noxxic/FK-Teplice_WebApp#readme"
+}
