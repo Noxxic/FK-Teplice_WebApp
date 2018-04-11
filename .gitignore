@@ -3,3 +3,5 @@ obj/
 node_modules/
 .vscode/
 wwwroot/dist/
+app.db
+app.db-journal
