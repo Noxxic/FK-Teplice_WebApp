@@ -11,10 +11,10 @@ namespace FKTeplice.ViewComponents {
         {
             var menuItems = new List<Tuple<string, string, string>>() {
                 Tuple.Create("Domů", "Home", "Index"),
-                Tuple.Create("Informace", "Home", "Index"),
-                Tuple.Create("Fitness", "Home", "Index"),
-                Tuple.Create("Medical", "Home", "Index"),
-                Tuple.Create("Trenér", "Home", "Index"),
+                Tuple.Create("Informace", "Player", "Index"),
+                Tuple.Create("Fitness", "Player", "Index"),
+                Tuple.Create("Medical", "Player", "Index"),
+                Tuple.Create("Trenér", "Player", "Index"),
             };
 
             return View(menuItems);

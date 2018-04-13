@@ -45,9 +45,16 @@
 						<span class="icon-bar"></span>
 					</a>
 
-					@await Component.InvokeAsync(nameof(TopMenu))
-				
-					@await Html.PartialAsync("_LoginPartial")
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbar-collapse">
+						@await Component.InvokeAsync(nameof(TopMenu))	
+						@await Html.PartialAsync("_LoginPartial")
+					</div>
 				</nav>
 			</header>
 			</div>
