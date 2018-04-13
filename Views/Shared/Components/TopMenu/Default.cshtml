@@ -1,7 +1,10 @@
+@model IEnumerable<Tuple<string, string, string>>
+
 <ul class="nav navbar-nav navbar-left">
-    <li class="active"><a href="#">Domů</a></li>
-    <li><a href="#">Informace</a></li>
-    <li><a href="#">Fitness</a></li>
-    <li><a href="#">Medical</a></li>
-    <li><a href="#">Trener</a></li>
+    @foreach (var item in Model)
+    {
+        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == item.Item2 ? "active" : "")">
+            <a asp-controller="@item.Item2" asp-action="@item.Item3">@item.Item1</a>
+        </li>
+    }
 </ul>
