@@ -37,10 +37,12 @@ namespace FKTeplice.Models {
 
         public double Fat { get; set; }
 
-        public int TeamId { get; set; }
+        public int? TeamId { get; set; }
 
         [ForeignKey("TeamId")]
         public virtual Team Team { get; set; }
         // TODO: Rodné číslo, rodinná anamnéza, post, alt post (tabulka)
+
+        public List<Absence> Absences { get; set; }
     }
 }

@@ -12,6 +12,8 @@ namespace FKTeplice.Data
     {
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<Absence> Absences { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

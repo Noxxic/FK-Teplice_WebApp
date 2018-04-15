@@ -13,5 +13,6 @@ namespace FKTeplice.Models
         public string Name { get; set; }
 
         public List<Player> Players { get; set; }
+        public List<Match> Matches { get; set; }
     }
 }
