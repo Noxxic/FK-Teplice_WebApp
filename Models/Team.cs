@@ -11,5 +11,7 @@ namespace FKTeplice.Models
 
         [Required]
         public string Name { get; set; }
+
+        public List<Player> Players { get; set; }
     }
 }
