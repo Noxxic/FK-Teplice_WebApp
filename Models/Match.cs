@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,5 +24,12 @@ namespace FKTeplice.Models
 
         [ForeignKey("TeamId")]
         public virtual Team Team { get; set; }
+
+        public virtual List<PlayerMatch> PlayerMatch { get; set; }
+
+        [NotMapped]
+        public virtual List<Player> Players { 
+            get => PlayerMatch.Select(x => x.Player).ToList();
+        }
     }
 }
