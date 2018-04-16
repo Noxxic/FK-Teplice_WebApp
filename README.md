@@ -5,8 +5,7 @@
 
 ***
 ## Databáze
-Defaultně je v ASP.NET Core 2.0 používán SQLite. Kvůli jeho omezením je nutné před spuštěním migrací zakomentovat `migrationBuilder.AddForeignKey` a `migrationBuilder.DropForeignKey` v `_InitialMigration.cs`.  
-Typ databáze se nastavuje v souboru `Startup.cs` (nutné nainstalovat providery) a connection string v souboru `appsettings.json`.
+V projektu je použiván [PostgreSQL](https://www.postgresql.org/). Connection string lze upravit v souboru `appsettings.json`.
 
 ***
 ## Spuštění
