@@ -11,12 +11,14 @@ namespace FKTeplice.Models {
         public int Id { get; set; }
 
         [Required]
+        [MinLength(2)]
         public string FirstName { get; set; }
 
         [Required]
+        [MinLength(2)]
         public string LastName { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode=true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode=true)]
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
