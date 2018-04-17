@@ -4,12 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using FKTeplice.Models;
+using FKTeplice.Data;
 
 namespace FKTeplice.Controllers
 {
     [Authorize]
     public class TeamController : Controller
     {
+        ApplicationDbContext _context;
+
+        public TeamController(ApplicationDbContext _context) {
+            this._context = _context;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -17,7 +26,14 @@ namespace FKTeplice.Controllers
         }
 
         [HttpGet]
-        public IActionResult Show(int id)
+        public async Task<IActionResult> Show(int id)
+        {
+            Team team = await _context.Teams.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return View(team);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
@@ -29,11 +45,17 @@ namespace FKTeplice.Controllers
         }
 
         [HttpPost]
-        public IActionResult Store()
+        public async Task<IActionResult> Store(Team team)
         {
-            return RedirectToAction("Show", new {
-                id = 0
-            });
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _context.Teams.AddAsync(team);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -1,0 +1,27 @@
+@model Team
+
+@{
+    ViewData["Title"] = "Přidat nový tým";
+}
+
+<form asp-controller="Team" asp-action="Store" method="Post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@ViewData["Title"]</h3>
+                </div>
+                <div class="box-body dl-horizontal">
+                    <div class="form-group">
+                        <label for="Name">Název *</label>
+                        <input class="form-control" asp-for="Name">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Uložit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
