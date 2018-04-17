@@ -1,18 +1,55 @@
 @model Player
 
 @{
+    string avatar = null;
+    if(Model.Photo != null) {
+        avatar = Convert.ToBase64String(Model.Photo);
+    }
+
     ViewData["Title"] = "Hráč - Jméno Příjmení";
 }
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">@Model.FirstName @Model.LastName</h3>
+<div class="col-md-12">
+    <div class="box box-widget widget-user-2">
+        <div class="widget-user-header bg-black">
+            <div class="widget-user-image">
+                @if (Model.Photo != null)
+                {
+                    <img class="img-responsive" src="data:image/*;base64,@avatar" alt="User Avatar">
+                }
             </div>
-            <div class="box-body dl-horizontal">
-                
+            <h3 class="widget-user-username">@Model.FirstName @Model.LastName</h3>
+            <div class="widget-user-desc">
+                @if (Model.Team != null)
+                {
+                    <a asp-controller="Team" asp-action="Show" asp-route-id="@Model.Team.Id">
+                        <span class="label label-primary">@Model.Team.Name</span>
+                    </a>
+                }
             </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#">Zápasy</a></li>
+                <li><a href="#">Zranění</a></li>
+                <li><a href="#">Absence</a></li>
+                <li><a href="#">Fitness</a></li>
+            </ul>
+        </div>
+        <div class="box-footer">
+            <a class="btn btn-primary" asp-controller="Player" asp-action="Edit" asp-route-id="@Model.Id">
+                <i class="fa fa-pencil-square-o"></i>
+                Upravit
+            </a>
+            <form asp-controller="Player" asp-action="Delete" method="Post"
+                onsubmit="return confirm('Opravdu odstranit?');" style="display: inline"
+            >
+                <input name="Id" type="hidden" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa fa-trash-o"></i> 
+                    Odstranit
+                </button>
+            </form>
         </div>
     </div>
 </div>
