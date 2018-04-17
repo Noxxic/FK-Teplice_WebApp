@@ -28,7 +28,12 @@ namespace FKTeplice.Controllers
         [HttpGet]
         public async Task<IActionResult> Show(int id)
         {
-            Team team = await _context.Teams.Where(x => x.Id == id).FirstOrDefaultAsync();
+            Team team = await _context.Teams
+                .Where(t => t.Id == id)
+                .Include(t => t.Players)
+                .Include(t => t.Matches)
+                .FirstOrDefaultAsync();
+            
             return View(team);
         }
 
@@ -39,9 +44,10 @@ namespace FKTeplice.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            Team team = await _context.Teams.Where(t => t.Id == id).FirstOrDefaultAsync();
+            return View(team);
         }
 
         [HttpPost]
@@ -59,11 +65,19 @@ namespace FKTeplice.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update()
+        public async Task<IActionResult> Update(int id, Team team)
         {
-            return RedirectToAction("Show", new {
-                id = 0
-            });
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            team.Id = id;
+
+            _context.Teams.Update(team);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
