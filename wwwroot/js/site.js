@@ -1,1 +1,3 @@
-﻿// Write your JavaScript code.
+﻿$(document).ready(function() {
+    $('.select-two').select2();
+});

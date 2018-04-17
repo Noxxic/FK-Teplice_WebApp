@@ -1,0 +1,11 @@
+.widget-user-2 .widget-user-image > img {
+    width: 120px;
+}
+
+.widget-user-header {
+    height: 160px;
+}
+
+.widget-user-2 .widget-user-username, .widget-user-2 .widget-user-desc{
+    margin-left: 150px;
+}
