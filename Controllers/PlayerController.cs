@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using FKTeplice.Data;
 using FKTeplice.Models;
+using System.IO;
+using FKTeplice.Models.PlayerViewModels;
 
 namespace FKTeplice.Controllers
 {
@@ -18,7 +20,6 @@ namespace FKTeplice.Controllers
             this._context = _context;
         }
 
-
         [HttpGet]
         public IActionResult Index()
         {
@@ -26,10 +27,26 @@ namespace FKTeplice.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Create() 
+        {
+            var teams = await _context.Teams.ToListAsync();
+            var vm = new UpdateStorePlayerModel();
+            vm.Teams = teams;
+            return View(vm);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Show(int id)
         {
-            Player player = await _context.Players.Where(x => x.Id == id).FirstOrDefaultAsync();
-            return View();
+            Player player = await _context.Players
+                                    .Where(x => x.Id == id)
+                                    .Include(x => x.Team)
+                                    .FirstOrDefaultAsync();
+            
+            if(player == null)
+                return NotFound();
+                
+            return View(player);
         }
 
         [HttpGet]
@@ -39,12 +56,33 @@ namespace FKTeplice.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Store(Player player)
+        public async Task<IActionResult> Store(UpdateStorePlayerModel playerModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            Player player = new Player {
+                FirstName = playerModel.FirstName,
+                LastName = playerModel.LastName,
+                Birthday = playerModel.Birthday,
+                School = playerModel.School,
+                Fat = playerModel.Fat,
+                Weight = playerModel.Weight,
+                Height = playerModel.Height,
+                TeamId = playerModel.TeamId
+            };
+
+            byte[] _photo = null;
+            if(playerModel.Photo != null) {
+                _photo = new byte[playerModel.Photo.Length];
+                using (var mem = new MemoryStream(_photo)) {
+                    await playerModel.Photo.CopyToAsync(mem);
+                }
+            }
+
+            player.Photo = _photo;
 
             await _context.Players.AddAsync(player);
             await _context.SaveChangesAsync();
