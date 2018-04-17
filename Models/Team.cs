@@ -10,6 +10,7 @@ namespace FKTeplice.Models
         public int Id { get; set; }
 
         [Required]
+        [MinLength(3)]
         public string Name { get; set; }
 
         public List<Player> Players { get; set; }
