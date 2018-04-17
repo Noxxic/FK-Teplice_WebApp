@@ -1,5 +1,6 @@
 .widget-user-2 .widget-user-image > img {
-    width: 120px;
+    max-height: 120px;
+    max-width: 120px;
 }
 
 .widget-user-header {
