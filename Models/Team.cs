@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FKTeplice.Models
 {
@@ -13,7 +14,8 @@ namespace FKTeplice.Models
         [MinLength(3)]
         public string Name { get; set; }
 
-        public List<Player> Players { get; set; }
-        public List<Match> Matches { get; set; }
+        public ICollection<Player> Players { get; set; } = new HashSet<Player>();
+
+        public ICollection<Match> Matches { get; set; } = new HashSet<Match>();
     }
 }

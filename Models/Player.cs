@@ -44,9 +44,9 @@ namespace FKTeplice.Models {
         public virtual Team Team { get; set; }
         // TODO: Rodné číslo, rodinná anamnéza, post, alt post (tabulka)
 
-        public virtual List<Absence> Absences { get; set; }
+        public virtual ICollection<Absence> Absences { get; set; } = new HashSet<Absence>();
 
-        public virtual List<PlayerMatch> PlayerMatch { get; set; }
+        public virtual ICollection<PlayerMatch> PlayerMatch { get; set; } = new HashSet<PlayerMatch>();
 
         [NotMapped]
         public virtual List<Match> Matches { 
