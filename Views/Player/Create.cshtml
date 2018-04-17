@@ -1,17 +1,17 @@
-@model Player
+@Model Player
 
 @{
-    ViewData["Title"] = "Hráč - Jméno Příjmení";
+    ViewData["Title"] = "Přidat nového hráče";
 }
 
 <div class="row">
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">@Model.FirstName @Model.LastName</h3>
+                <h3 class="box-title">Přidat nového hráče</h3>
             </div>
             <div class="box-body dl-horizontal">
-                
+                <input asp-for="Model.FirstName" />
             </div>
         </div>
     </div>
