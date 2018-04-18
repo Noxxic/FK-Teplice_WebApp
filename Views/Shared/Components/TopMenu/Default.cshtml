@@ -1,13 +1,14 @@
 @model IEnumerable<Tuple<string, string, string>>
 
+@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+}
+
 <ul class="nav navbar-nav navbar-left">
     @foreach (var item in Model)
     {
-        <li class="
-        @(
-                ViewContext.RouteData.Values["controller"].ToString() == item.Item2 
-                && ViewContext.RouteData.Values["action"].ToString() == item.Item3 ? "active" : ""
-        )">
+        <li class="@(controller == item.Item2 && action == item.Item3 ? "active" : "")">
             <a asp-controller="@item.Item2" asp-action="@item.Item3">@item.Item1</a>
         </li>
     }
