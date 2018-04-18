@@ -54,5 +54,9 @@ namespace FKTeplice.Models {
         public virtual List<Match> Matches { 
             get => PlayerMatch.Select(x => x.Match).ToList();
         }
+
+        [NotMapped]
+        public virtual string FullName => $"{FirstName} {LastName}";
+        
     }
 }
