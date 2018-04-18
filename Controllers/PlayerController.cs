@@ -21,9 +21,12 @@ namespace FKTeplice.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var players = await _context.Players
+                                    .Include(p => p.Team)
+                                    .ToListAsync();
+            return View(players);
         }
 
         [HttpGet]
@@ -91,11 +94,14 @@ namespace FKTeplice.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update()
+        public IActionResult Update(int id, Player player)
         {
-            return RedirectToAction("Show", new {
-                id = 0
-            });
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return RedirectToAction("Show", id);
         }
 
         [HttpPost]

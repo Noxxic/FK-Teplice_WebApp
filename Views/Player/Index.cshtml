@@ -1,0 +1,56 @@
+@model List<Player>
+
+@{
+    ViewData["Title"] = $"Přehled hráčů";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewData["Title"]</h3>
+            </div>
+            <div class="box-body dl-horizontal">
+                <a class="btn btn-primary" asp-controller="Player" asp-action="Create">
+                    <i class="fa fa-plus"></i>
+                    Přidat hráče
+                </a>
+                <hr>
+                <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
+                        <thead>
+                            <tr>
+                                <th>Jméno</th>
+                                <th>Narozen</th>
+                                <th>Tým</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var player in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Player" asp-action="Show" asp-route-id="@player.Id">
+                                        @player.FullName
+                                    </a>
+                                </td>
+                                <td>
+                                    @player.Birthday.ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    @if (player.TeamId != null) 
+                                    {
+                                        <a asp-controller="Team" asp-action="Show" asp-route-id="@player.TeamId">
+                                            @player.Team.Name
+                                        </a>  
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
