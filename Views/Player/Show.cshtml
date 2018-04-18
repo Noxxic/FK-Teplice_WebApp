@@ -32,21 +32,97 @@
                 <p>Obránce (útočník)</p>
             </div>
         </div>
-        <div class="box-body no-padding">
-            <ul class="nav nav-tabs nav-justified">
-                <li><a href="#">Zápasy</a></li>
-                <li><a href="#">Zranění</a></li>
-                <li><a href="#">Absence</a></li>
-                <li><a href="#">Fitness</a></li>
-                <li class="active"><a href="#">Manager</a></li>
+        <div class="box-body">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#matches" data-toggle="tab" role="tab">Zápasy</a>
+                </li>
+                <li role="presentation">
+                    <a href="#injuries" data-toggle="tab" role="tab">Zranění</a>
+                </li>
+                <li role="presentation">
+                    <a href="#absences" data-toggle="tab" role="tab">Absence</a>
+                </li>
+                <li role="presentation">
+                    <a href="#fitness" data-toggle="tab" role="tab">Fitness</a>
+                </li>
+                <li role="presentation">
+                    <a href="#manager" data-toggle="tab" role="tab">Manager</a>
+                </li>
             </ul>
+            <hr>
+            <div class="container">
+                <div class="row form-group">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="matches">
+                            <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
+                                    <thead>
+                                        <tr>
+                                            <th>Oponent</th>
+                                            <th>Karty</th>
+                                            <th>Výsledek</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var pmatch in Model.PlayerMatch)
+                                        {
+                                            
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="injuries">
+                            
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="absences">
+                            <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
+                                    <thead>
+                                        <tr>
+                                            <th>Od</th>
+                                            <th>Do</th>
+                                            <th>Počet dní</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var absence in Model.Absences)
+                                        {
+                                            <td>absence.From.ToString("dd/MM/yyyy")</td>
+                                            <td>absence.To.ToString("dd/MM/yyyy")</td>
+                                            <td>absence.DaysCount</td>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="fitness">
 
 
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="manager">
+
+                            <div class="form-group">
+                                <label>Smlouva od - do</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <span class="form-control pull-right">
+                                        @Model.ContractFrom.ToString("dd/MM/yyyy") - @Model.ContractTo.ToString("dd/MM/yyyy")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="box-footer">
             <a class="btn btn-primary" asp-controller="Player" asp-action="Edit" asp-route-id="@Model.Id">
                 <i class="fa fa-pencil-square-o"></i>
-                Upravit
+                Upravits
             </a>
             <form asp-controller="Player" asp-action="Delete" method="Post"
                 onsubmit="return confirm('Opravdu odstranit?');" style="display: inline"

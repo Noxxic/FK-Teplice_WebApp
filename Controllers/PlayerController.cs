@@ -44,6 +44,7 @@ namespace FKTeplice.Controllers
             Player player = await _context.Players
                                     .Where(x => x.Id == id)
                                     .Include(x => x.Team)
+                                    .Include(x => x.PlayerMatch)
                                     .FirstOrDefaultAsync();
             
             if(player == null)
