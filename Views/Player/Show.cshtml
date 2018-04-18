@@ -6,7 +6,7 @@
         avatar = Convert.ToBase64String(Model.Photo);
     }
 
-    ViewData["Title"] = "Hráč - Jméno Příjmení";
+    ViewData["Title"] = $"Hráč - {Model.FullName}";
 }
 
 <div class="col-md-12">
@@ -18,23 +18,30 @@
                     <img class="img-responsive" src="data:image/*;base64,@avatar" alt="User Avatar">
                 }
             </div>
-            <h3 class="widget-user-username">@Model.FirstName @Model.LastName</h3>
+            <h3 class="widget-user-username">@Model.FullName</h3>
             <div class="widget-user-desc">
                 @if (Model.Team != null)
                 {
-                    <a asp-controller="Team" asp-action="Show" asp-route-id="@Model.Team.Id">
-                        <span class="label label-primary">@Model.Team.Name</span>
-                    </a>
+                    <p>
+                        <a asp-controller="Team" asp-action="Show" asp-route-id="@Model.Team.Id">
+                            <h4><span class="label label-primary">@Model.Team.Name</span></h4>
+                        </a>
+                    </p>
                 }
+                <p>@Model.Birthday.Date.ToString("dd/MM/yyyy")</p>
+                <p>Obránce (útočník)</p>
             </div>
         </div>
         <div class="box-body no-padding">
             <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#">Zápasy</a></li>
+                <li><a href="#">Zápasy</a></li>
                 <li><a href="#">Zranění</a></li>
                 <li><a href="#">Absence</a></li>
                 <li><a href="#">Fitness</a></li>
+                <li class="active"><a href="#">Manager</a></li>
             </ul>
+
+
         </div>
         <div class="box-footer">
             <a class="btn btn-primary" asp-controller="Player" asp-action="Edit" asp-route-id="@Model.Id">
