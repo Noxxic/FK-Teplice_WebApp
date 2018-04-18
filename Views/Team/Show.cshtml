@@ -16,6 +16,7 @@
                     <tr>
                         <th>Jméno</th>
                         <th>Post</th>
+                        <th>Alternativní Post</th>
                     </tr>
 
                     @foreach(var player in Model.Players)
@@ -25,7 +26,8 @@
                                     @player.FullName
                                 </a>
                             </td>
-                            <td></td>
+                            <td>Obránce</td>
+                            <td>Útočník</td>
                         </tr>
                     }
                 </table>
@@ -52,6 +54,15 @@
             </div>
             <div class="box-footer">
                 <a class="btn btn-primary" asp-controller="Team" asp-action="Edit" asp-route-id="@Model.Id">Upravit</a>
+                <form asp-controller="Team" asp-action="Delete" method="Post"
+                    onsubmit="return confirm('Opravdu odstranit?');" style="display: inline"
+                >
+                    <input name="Id" type="hidden" value="@Model.Id" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i> 
+                        Odstranit
+                    </button>
+                </form>
             </div>
         </div>
     </div>

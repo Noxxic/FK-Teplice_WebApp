@@ -85,8 +85,10 @@ namespace FKTeplice.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete(Team team)
         {
+             _context.Teams.Remove(team);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
     }
