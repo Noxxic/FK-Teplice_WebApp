@@ -1,0 +1,51 @@
+@model List<Team>
+
+@{
+    ViewData["Title"] = $"Přehled teamů";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewData["Title"]</h3>
+            </div>
+            <div class="box-body dl-horizontal">
+                <a class="btn btn-primary" asp-controller="Team" asp-action="Create">
+                    <i class="fa fa-plus"></i>
+                    Přidat tým
+                </a>
+                <hr>
+                <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
+                        <thead>
+                            <tr>
+                                <th>Název</th>
+                                <th>Počet hráčů</th>
+                                <th>Počet zápasů</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var team in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Team" asp-action="Show" asp-route-id="@team.Id">
+                                        @team.Name
+                                    </a>
+                                </td>
+                                <td>
+                                    @team.Players.Count
+                                </td>
+                                <td>
+                                    @team.Matches.Count
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

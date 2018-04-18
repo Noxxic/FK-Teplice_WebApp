@@ -20,9 +20,13 @@ namespace FKTeplice.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var teams = await _context.Teams
+                                       .Include(t => t.Matches)
+                                       .Include(t => t.Players)
+                                       .ToListAsync();
+            return View(teams);
         }
 
         [HttpGet]
