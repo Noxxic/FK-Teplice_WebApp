@@ -1,12 +1,10 @@
 .widget-user-2 .widget-user-image > img {
-    max-height: 120px;
-    max-width: 120px;
-}
-
-.widget-user-header {
-    height: 160px;
+    max-height: 160px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
 }
 
 .widget-user-2 .widget-user-username, .widget-user-2 .widget-user-desc{
-    margin-left: 150px;
+    margin-left: 180px;
 }

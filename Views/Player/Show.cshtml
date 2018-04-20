@@ -9,130 +9,153 @@
     ViewData["Title"] = $"Hráč - {Model.FullName}";
 }
 
-<div class="col-md-12">
-    <div class="box box-widget widget-user-2">
-        <div class="widget-user-header bg-black">
-            <div class="widget-user-image">
-                @if (Model.Photo != null)
-                {
-                    <img class="img-responsive" src="data:image/*;base64,@avatar" alt="User Avatar">
-                }
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-widget widget-user-2">
+            <div class="widget-user-header bg-black">
+
+                    <div class="widget-user-image">
+                        @if (Model.Photo != null)
+                        {
+                            <img class="img-responsive" src="data:image/*;base64,@avatar" alt="User Avatar">
+                        }
+                    </div>
+                    <h3 class="widget-user-username">@Model.FullName</h3>
+                    <div class="widget-user-desc">
+                        @if (Model.Team != null)
+                        {
+                            <p>
+                                <a asp-controller="Team" asp-action="Show" asp-route-id="@Model.Team.Id">
+                                    <h4><span class="label label-primary">@Model.Team.Name</span></h4>
+                                </a>
+                            </p>
+                        }
+                        <p>
+                            <i class="fa fa-birthday-cake"></i> @Model.Birthday.Date.ToString("dd/MM/yyyy")
+                        </p>
+                        <p>
+                            <i class="fa fa-user-circle"></i> Obránce (útočník)
+                        </p>
+                        <p>
+                            <i class="fa fa-university"></i> @Model.School
+                        </p>
+                    </div>
             </div>
-            <h3 class="widget-user-username">@Model.FullName</h3>
-            <div class="widget-user-desc">
-                @if (Model.Team != null)
-                {
-                    <p>
-                        <a asp-controller="Team" asp-action="Show" asp-route-id="@Model.Team.Id">
-                            <h4><span class="label label-primary">@Model.Team.Name</span></h4>
-                        </a>
-                    </p>
-                }
-                <p>@Model.Birthday.Date.ToString("dd/MM/yyyy")</p>
-                <p>Obránce (útočník)</p>
-            </div>
-        </div>
-        <div class="box-body">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#matches" data-toggle="tab" role="tab">Zápasy</a>
-                </li>
-                <li role="presentation">
-                    <a href="#injuries" data-toggle="tab" role="tab">Zranění</a>
-                </li>
-                <li role="presentation">
-                    <a href="#absences" data-toggle="tab" role="tab">Absence</a>
-                </li>
-                <li role="presentation">
-                    <a href="#fitness" data-toggle="tab" role="tab">Fitness</a>
-                </li>
-                <li role="presentation">
-                    <a href="#manager" data-toggle="tab" role="tab">Manager</a>
-                </li>
-            </ul>
-            <hr>
-            <div class="container">
-                <div class="row form-group">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="matches">
-                            <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                                <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
-                                    <thead>
-                                        <tr>
-                                            <th>Oponent</th>
-                                            <th>Karty</th>
-                                            <th>Výsledek</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var pmatch in Model.PlayerMatch)
-                                        {
-                                            
-                                        }
-                                    </tbody>
-                                </table>
+            <div class="box-body">
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#matches" data-toggle="tab" role="tab">Zápasy</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#injuries" data-toggle="tab" role="tab">Zranění</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#absences" data-toggle="tab" role="tab">Absence</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#fitness" data-toggle="tab" role="tab">Fitness</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#manager" data-toggle="tab" role="tab">Manager</a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="container">
+                    <div class="row form-group">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="matches">
+                                <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                    <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
+                                        <thead>
+                                            <tr>
+                                                <th>Oponent</th>
+                                                <th>Karty</th>
+                                                <th>Výsledek</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var pmatch in Model.PlayerMatch)
+                                            {
+                                                
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="injuries">
-                            
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="absences">
-                            <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                                <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
-                                    <thead>
-                                        <tr>
-                                            <th>Od</th>
-                                            <th>Do</th>
-                                            <th>Počet dní</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var absence in Model.Absences)
-                                        {
-                                            <td>absence.From.ToString("dd/MM/yyyy")</td>
-                                            <td>absence.To.ToString("dd/MM/yyyy")</td>
-                                            <td>absence.DaysCount</td>
-                                        }
-                                    </tbody>
-                                </table>
+                            <div role="tabpanel" class="tab-pane" id="injuries">
+                                
                             </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="fitness">
+                            <div role="tabpanel" class="tab-pane" id="absences">
+                                <div id="cdtable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                    <table id="cdtable" class="table table-bordered table-striped dataTable data-table-enable">
+                                        <thead>
+                                            <tr>
+                                                <th>Od</th>
+                                                <th>Do</th>
+                                                <th>Počet dní</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var absence in Model.Absences)
+                                            {
+                                                <td>absence.From.ToString("dd/MM/yyyy")</td>
+                                                <td>absence.To.ToString("dd/MM/yyyy")</td>
+                                                <td>absence.DaysCount</td>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="fitness">
 
 
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="manager">
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="manager">
 
-                            <div class="form-group">
-                                <label>Smlouva od - do</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
+                                <div class="form-group">
+                                    <label>Smlouva od - do</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <span class="form-control pull-right">
+                                            @Model.ContractFrom.ToString("dd/MM/yyyy") - @Model.ContractTo.ToString("dd/MM/yyyy")
+                                        </span>
                                     </div>
-                                    <span class="form-control pull-right">
-                                        @Model.ContractFrom.ToString("dd/MM/yyyy") - @Model.ContractTo.ToString("dd/MM/yyyy")
-                                    </span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Smlouvy</label>
+                                    <div class="list-group">
+                                        @foreach (var contract in Model.Contracts)
+                                        {
+                                            <a href="#" class="list-group-item">
+                                                @contract.Name
+                                                <span class="pull-right">@contract.UploadDate.ToString("dd/MM/yyyy")</span>
+                                            </a>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="box-footer">
-            <a class="btn btn-primary" asp-controller="Player" asp-action="Edit" asp-route-id="@Model.Id">
-                <i class="fa fa-pencil-square-o"></i>
-                Upravit
-            </a>
-            <form asp-controller="Player" asp-action="Delete" method="Post"
-                onsubmit="return confirm('Opravdu odstranit?');" style="display: inline"
-            >
-                <input name="Id" type="hidden" value="@Model.Id" />
-                <button type="submit" class="btn btn-danger">
-                    <i class="fa fa-trash-o"></i> 
-                    Odstranit
-                </button>
-            </form>
+            <div class="box-footer">
+                <a class="btn btn-primary" asp-controller="Player" asp-action="Edit" asp-route-id="@Model.Id">
+                    <i class="fa fa-pencil-square-o"></i>
+                    Upravit
+                </a>
+                <form asp-controller="Player" asp-action="Delete" method="Post"
+                    onsubmit="return confirm('Opravdu odstranit?');" style="display: inline"
+                >
+                    <input name="Id" type="hidden" value="@Model.Id" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i> 
+                        Odstranit
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
