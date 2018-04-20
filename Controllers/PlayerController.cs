@@ -46,6 +46,11 @@ namespace FKTeplice.Controllers
                                     .Include(x => x.Team)
                                     .Include(x => x.PlayerMatch)
                                     .FirstOrDefaultAsync();
+
+            player.Contracts = await _context.Documents
+                                    .Where(x => x.EntityId == id)
+                                    .Where(x => x.EntityTable == "User")
+                                    .ToListAsync();
             
             if(player == null)
                 return NotFound();

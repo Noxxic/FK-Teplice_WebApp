@@ -51,12 +51,13 @@ namespace FKTeplice.Models {
         public virtual ICollection<PlayerMatch> PlayerMatch { get; set; } = new HashSet<PlayerMatch>();
 
         [NotMapped]
-        public virtual List<Match> Matches { 
-            get => PlayerMatch.Select(x => x.Match).ToList();
-        }
+        public virtual List<Match> Matches => PlayerMatch.Select(x => x.Match).ToList();
 
         [NotMapped]
         public virtual string FullName => $"{FirstName} {LastName}";
+
+        [NotMapped]
+        public List<Document> Contracts { get; set; }
         
     }
 }
