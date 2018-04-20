@@ -6,22 +6,11 @@
         <ul class="sidebar-menu" data-widget="tree">
             @foreach (var team in Model)
             {
-                <li class="treeview">
-                    <a href="#">
+                <li>
+                    <a asp-controller="Team" asp-action="Show" asp-route-id="@team.Id">
                         <i class="fa fa-users"></i>
                         <span>@team.Name</span>
                     </a>
-                    <ul class="treeview-menu">
-                        @foreach (var player in team.Players.OrderBy(x => x.FirstName))
-                        {
-                            <li>
-                                <a asp-controller="Player" asp-action="Show" asp-route-id="@player.Id">
-                                    <i class="fa fa-user"></i>
-                                    @player.FullName
-                                </a>
-                            </li>
-                        }
-                    </ul>
                 </li>    
             }
         </ul>

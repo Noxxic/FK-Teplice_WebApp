@@ -17,7 +17,6 @@ namespace FKTeplice.ViewComponents {
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var teams = await _context.Teams
-                .Include(team => team.Players)
                 .ToListAsync();
 
             return View(teams);
