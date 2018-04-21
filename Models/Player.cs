@@ -57,7 +57,7 @@ namespace FKTeplice.Models {
         public virtual string FullName => $"{FirstName} {LastName}";
 
         [NotMapped]
-        public List<Document> Contracts { get; set; }
+        public ICollection<Document> Contracts { get; set; } = new HashSet<Document>();
         
     }
 }

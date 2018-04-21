@@ -59,9 +59,23 @@ namespace FKTeplice.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var teams = await _context.Teams.ToListAsync();
+            var vm = new UpdateStorePlayerModel();
+            vm.Teams = teams;
+
+            Player player = _context.Players.Where(x => x.Id == id).FirstOrDefault();
+            vm.FirstName =  player.FirstName;
+            vm.LastName = player.LastName;
+            vm.Birthday = player.Birthday;
+            vm.School = player.School;
+            vm.Fat = player.Fat;
+            vm.Weight = player.Weight;
+            vm.Height = player.Height;
+            vm.TeamId = player.TeamId;
+
+            return View(vm);
         }
 
         [HttpPost]
@@ -100,14 +114,41 @@ namespace FKTeplice.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(int id, Player player)
+        public async Task<IActionResult> Update(int id, UpdateStorePlayerModel playerModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            return RedirectToAction("Show", id);
+            Player player = new Player {
+                Id = (int) playerModel.Id,
+                FirstName = playerModel.FirstName,
+                LastName = playerModel.LastName,
+                Birthday = playerModel.Birthday,
+                School = playerModel.School,
+                Fat = playerModel.Fat,
+                Weight = playerModel.Weight,
+                Height = playerModel.Height,
+                TeamId = playerModel.TeamId
+            };
+
+            byte[] _photo = null;
+            if(playerModel.Photo != null) {
+                _photo = new byte[playerModel.Photo.Length];
+                using (var mem = new MemoryStream(_photo)) {
+                    await playerModel.Photo.CopyToAsync(mem);
+                }
+            }
+
+            player.Photo = _photo;
+
+            _context.Players.Update(player);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Show", new {
+                id = player.Id
+            });
         }
 
         [HttpPost]
