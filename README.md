@@ -1,7 +1,7 @@
 # FK Teplice
 
 ## Informace
-   K vývoji je používán [ASP.NET Core 2.0](https://www.microsoft.com/net/download) a [NMP](https://nodejs.org/en/) (instalován s Node.js)
+   K vývoji je používán [ASP.NET Core 2.0](https://www.microsoft.com/net/download) a [NPM](https://nodejs.org/en/) (instalován s Node.js)
 
 ***
 ## Databáze
