@@ -55,6 +55,8 @@ namespace FKTeplice.Models {
         
         // TODO: Rodné číslo, rodinná anamnéza
 
+        public virtual ICollection<Physio> Physios { get; set; } = new HashSet<Physio>();
+
         public virtual ICollection<Absence> Absences { get; set; } = new HashSet<Absence>();
 
         public virtual ICollection<PlayerMatch> PlayerMatch { get; set; } = new HashSet<PlayerMatch>();

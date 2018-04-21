@@ -18,6 +18,8 @@ namespace FKTeplice.Data
         public DbSet<PlayerMatch> PlayerMatches { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<Competition> Competitions { get; set; }
+        public DbSet<Physio> Physios { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
