@@ -30,6 +30,10 @@ namespace FKTeplice.Models.PlayerViewModels
         public double Fat { get; set; }
         public string School { get; set; }
 
+        public int? PositionId { get; set; }
+        public int? AltPositionId { get; set; }
+
+        public ICollection<Position> Positions { get; set; }
         public ICollection<Team> Teams { get; set; }
     }
 }

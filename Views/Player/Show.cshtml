@@ -13,7 +13,6 @@
     <div class="col-md-12">
         <div class="box box-widget widget-user-2">
             <div class="widget-user-header bg-black">
-
                     <div class="widget-user-image">
                         @if (Model.Photo != null)
                         {
@@ -34,7 +33,9 @@
                             <i class="fa fa-birthday-cake"></i> @Model.Birthday.Date.ToString("dd/MM/yyyy")
                         </p>
                         <p>
-                            <i class="fa fa-user-circle"></i> Obránce (útočník)
+                            <i class="fa fa-user-circle"></i>
+                            @(Model.Position?.Name ?? "") 
+                            @((Model.AltPosition != null) ? $"({Model.AltPosition.Name})" : "")
                         </p>
                         <p>
                             <i class="fa fa-university"></i> @Model.School

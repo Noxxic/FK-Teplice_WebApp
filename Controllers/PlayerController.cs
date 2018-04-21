@@ -32,9 +32,10 @@ namespace FKTeplice.Controllers
         [HttpGet]
         public async Task<IActionResult> Create() 
         {
-            var teams = await _context.Teams.ToListAsync();
             var vm = new UpdateStorePlayerModel();
-            vm.Teams = teams;
+            vm.Teams = await _context.Teams.ToListAsync();
+            vm.Positions = await _context.Positions.ToListAsync();
+            
             return View(vm);
         }
 
@@ -45,6 +46,8 @@ namespace FKTeplice.Controllers
                                     .Where(x => x.Id == id)
                                     .Include(x => x.Team)
                                     .Include(x => x.PlayerMatch)
+                                    .Include(x => x.AltPosition)
+                                    .Include(x => x.Position)
                                     .FirstOrDefaultAsync();
 
             player.Contracts = await _context.Documents
@@ -60,10 +63,10 @@ namespace FKTeplice.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
-        {
-            var teams = await _context.Teams.ToListAsync();
+        { 
             var vm = new UpdateStorePlayerModel();
-            vm.Teams = teams;
+            vm.Teams = await _context.Teams.ToListAsync();
+            vm.Positions = await _context.Positions.ToListAsync();
 
             Player player = _context.Players.Where(x => x.Id == id).FirstOrDefault();
             vm.FirstName =  player.FirstName;
@@ -74,6 +77,8 @@ namespace FKTeplice.Controllers
             vm.Weight = player.Weight;
             vm.Height = player.Height;
             vm.TeamId = player.TeamId;
+            vm.PositionId = player.PositionId;
+            vm.AltPositionId = player.AltPositionId;
 
             return View(vm);
         }
@@ -94,7 +99,9 @@ namespace FKTeplice.Controllers
                 Fat = playerModel.Fat,
                 Weight = playerModel.Weight,
                 Height = playerModel.Height,
-                TeamId = playerModel.TeamId
+                TeamId = playerModel.TeamId,
+                PositionId = playerModel.PositionId,
+                AltPositionId = playerModel.AltPositionId
             };
 
             byte[] _photo = null;
@@ -130,7 +137,9 @@ namespace FKTeplice.Controllers
                 Fat = playerModel.Fat,
                 Weight = playerModel.Weight,
                 Height = playerModel.Height,
-                TeamId = playerModel.TeamId
+                TeamId = playerModel.TeamId,
+                PositionId = playerModel.PositionId,
+                AltPositionId = playerModel.AltPositionId
             };
 
             byte[] _photo = null;
