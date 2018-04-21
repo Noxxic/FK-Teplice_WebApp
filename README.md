@@ -7,6 +7,12 @@
 ## Databáze
 V projektu je použiván [PostgreSQL](https://www.postgresql.org/). Connection string lze upravit v souboru `appsettings.json`.
 
+#### Seedování
+V projektu je implementováno vlastní seedování databáze. Vlastní seeder musí implementovat rozhraní `ISeeder` a pro hromadné spuštění musí být zaregistrován v `Data/ApplicationDbSeeder.cs`.
+
+Hromadné seedování (spuštění všech zaregistrovaných seederů) se spustí příkazem `dotnet run seed`.
+Jednotlivé seedery lze spustit příkazem `dotnet run seed --[název seederu]` (nutné uvádět i jmenný prostor).
+
 ***
 ## Spuštění
 
