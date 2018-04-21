@@ -9,7 +9,6 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css';
 import '../css/site.css';
 
 import 'bootstrap';
-import 'jquery';
 import 'admin-lte';
 import 'datatables/media/js/jquery.dataTables.js';
 import 'select2/dist/js/select2.js';
