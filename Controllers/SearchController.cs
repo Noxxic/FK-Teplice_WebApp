@@ -27,11 +27,13 @@ namespace FKTeplice.Controllers
             string query = $"%{q?.ToLower()}%";
             model.Teams = await _context.Teams
                                 .Where(x => EF.Functions.Like(x.Name.ToLower(), query))
+                                .Take(10)
                                 .ToListAsync();
 
             model.Players = await _context.Players
                                 .Where(x => EF.Functions.Like(x.FirstName.ToLower(), query) 
                                          || EF.Functions.Like(x.LastName.ToLower(), query))
+                                .Take(10)
                                 .ToListAsync();
 
             model.Query = q;
