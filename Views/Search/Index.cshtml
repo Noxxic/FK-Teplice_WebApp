@@ -12,8 +12,14 @@
                 <h3 class="box-title">@ViewData["Title"]</h3>
             </div>
             <div class="box-body dl-horizontal">
-                <p>Hráči (@Model.Players.Count):</p>
+                <p>Hráči:</p>
                 <div class="list-group">
+                    @if (Model.Players.Count == 0)
+                    {
+                        <div class="list-group-item">
+                            Nenalezeni žádní hráči
+                        </div>
+                    }
                     @foreach (var player in Model.Players)
                     {
                         <a class="list-group-item" asp-controller="Player" asp-action="Show" asp-route-id="@player.Id">
@@ -22,8 +28,14 @@
                     }
                 </div>
 
-                <p>Týmy (@Model.Teams.Count):</p>
+                <p>Týmy:</p>
                 <div class="list-group">
+                    @if (Model.Teams.Count == 0)
+                    {
+                        <div class="list-group-item">
+                            Nenalezené žádné týmy
+                        </div>
+                    }
                     @foreach (var team in Model.Teams)
                     {
                         <a class="list-group-item" asp-controller="Team" asp-action="Show" asp-route-id="@team.Id">
