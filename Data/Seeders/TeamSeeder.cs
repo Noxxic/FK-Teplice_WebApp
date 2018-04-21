@@ -8,8 +8,6 @@ namespace FKTeplice.Data.Seeders
 {
     public class TeamSeeder : ISeeder
     {
-        ApplicationDbContext _context;
-
         Random rnd = new Random();
 
         int TeamCount { get; } = 10;
@@ -22,11 +20,7 @@ namespace FKTeplice.Data.Seeders
             "Tým", "Spolek", "Skupina", "Třída", "Družstvo", "Mužstvo",
         };
 
-        public TeamSeeder(ApplicationDbContext _context) {
-            this._context = _context;
-        }
-
-        public void Run()
+        public void Run(ApplicationDbContext _context)
         {
             int count = _context.Teams.Count();
 

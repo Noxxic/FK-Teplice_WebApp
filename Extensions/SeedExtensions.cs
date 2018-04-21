@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace FKTeplice.Extensions
 {
     public static class SeedExtensions {
-        public static IWebHost SeedDatabase(this IWebHost webHost, bool seed)
+        public static IWebHost SeedDatabase(this IWebHost webHost, bool seed, string seeder)
         {
             if(seed) {
                 using (var scope = webHost.Services.CreateScope())
@@ -14,7 +14,7 @@ namespace FKTeplice.Extensions
                     var services = scope.ServiceProvider;
                     var dbContext = services.GetRequiredService<ApplicationDbContext>();
 
-                    ApplicationDbSeeder.Seed(dbContext);
+                    ApplicationDbSeeder.Seed(dbContext, seeder);
                 }
             }
             return webHost;

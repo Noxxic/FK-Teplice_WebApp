@@ -8,8 +8,6 @@ namespace FKTeplice.Data.Seeders
 {
     public class PlayerSeeder : ISeeder
     {
-        ApplicationDbContext _context;
-
         Random rnd = new Random();
 
         int PlayerCount { get; } = 20;
@@ -27,11 +25,7 @@ namespace FKTeplice.Data.Seeders
         DateTime MinBirthday { get; } = new DateTime(1990, 1, 1);    
         DateTime MaxBirthday { get; } = new DateTime(2010, 1, 1);
 
-        public PlayerSeeder(ApplicationDbContext _context) {
-            this._context = _context;
-        }
-
-        public void Run()
+        public void Run(ApplicationDbContext _context)
         {
             int count = _context.Teams.Count();
 

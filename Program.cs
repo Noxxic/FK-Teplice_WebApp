@@ -16,10 +16,22 @@ namespace FKTeplice
         public static void Main(string[] args)
         {
             var arguments = args.ToList();
-            bool seed = arguments.RemoveAll(x => x == "seed") > 0;
+            string seeder = "";
+            bool seed = false;
             
+            for(int i = 0; i < arguments.Count; i++) {
+                if(arguments[i] == "seed") {
+                    if(i < arguments.Count - 1 && arguments[i + 1].StartsWith("--")) {
+                        seeder = arguments[i + 1].Substring(2);
+                        arguments.RemoveAt(i + 1);
+                    } 
+                    seed = true;
+                    arguments.RemoveAt(i);
+                }
+            }
+
             BuildWebHost(arguments.ToArray())
-                        .SeedDatabase(seed)
+                        .SeedDatabase(seed, seeder)
                         .Run();
         }
 

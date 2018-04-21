@@ -2,6 +2,6 @@ namespace FKTeplice.Data.Seeders
 {
     public interface ISeeder 
     {
-        void Run();
+        void Run(ApplicationDbContext _context);
     }
 }
