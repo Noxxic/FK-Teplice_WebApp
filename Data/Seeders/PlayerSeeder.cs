@@ -29,7 +29,7 @@ namespace FKTeplice.Data.Seeders
         {
             int count = _context.Teams.Count();
 
-            _context.Players.AddRangeAsync(
+            _context.Players.AddRange(
                 Enumerable.Range(0, this.PlayerCount).Select(x => new Player() {
                     FirstName = firstNames[rnd.Next(firstNames.Length)],
                     LastName = lastNames[rnd.Next(lastNames.Length)],
@@ -38,7 +38,7 @@ namespace FKTeplice.Data.Seeders
                 })
             );
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

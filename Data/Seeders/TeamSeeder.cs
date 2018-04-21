@@ -24,13 +24,13 @@ namespace FKTeplice.Data.Seeders
         {
             int count = _context.Teams.Count();
 
-            _context.Teams.AddRangeAsync(
+            _context.Teams.AddRange(
                 Enumerable.Range(0, this.TeamCount).Select(x => new Team() {
                     Name = $"{adjectives[rnd.Next(adjectives.Length)]} {teamNames[rnd.Next(teamNames.Length)]}"
                 })
             );
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }
