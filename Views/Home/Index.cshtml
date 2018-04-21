@@ -1,3 +1,32 @@
-﻿@{
+﻿@using FKTeplice.Models.HomeViewModels
+@model IndexHomeModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Hráči</h3>
+            </div>
+            <div class="box-body dl-horizontal">
+                <a class="btn btn-primary" asp-controller="Player" asp-action="Create">Přidat hráče</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Týmy</h3>
+            </div>
+            <div class="box-body dl-horizontal">
+                <a class="btn btn-primary" asp-controller="Team" asp-action="Create">Přidat tým</a>
+            </div>
+        </div>
+    </div>
+</div>
