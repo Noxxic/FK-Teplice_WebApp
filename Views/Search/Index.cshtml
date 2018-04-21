@@ -1,0 +1,37 @@
+@using FKTeplice.Models.SearchViewModels
+@model SearchModel
+
+@{
+    ViewData["Title"] = $"Vyhledávání - '{Model.Query}'";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewData["Title"]</h3>
+            </div>
+            <div class="box-body dl-horizontal">
+                <p>Hráči (@Model.Players.Count):</p>
+                <div class="list-group">
+                    @foreach (var player in Model.Players)
+                    {
+                        <a class="list-group-item" asp-controller="Player" asp-action="Show" asp-route-id="@player.Id">
+                            @player.FullName
+                        </a>
+                    }
+                </div>
+
+                <p>Týmy (@Model.Teams.Count):</p>
+                <div class="list-group">
+                    @foreach (var team in Model.Teams)
+                    {
+                        <a class="list-group-item" asp-controller="Team" asp-action="Show" asp-route-id="@team.Id">
+                            @team.Name
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

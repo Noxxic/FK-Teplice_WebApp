@@ -52,7 +52,13 @@
 						</div>
 
 						<div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
-							<form class="navbar-form navbar-left" role="search">
+							<form 
+								class="navbar-form navbar-left" 
+								role="search" 
+								asp-controller="Search" 
+								asp-action="Index" 
+								method="GET"
+							>
 								<div class="input-group">
 									<input type="text" name="q" class="form-control" placeholder="Hledej">
 								</div>
