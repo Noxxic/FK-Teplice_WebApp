@@ -44,7 +44,16 @@ namespace FKTeplice.Models {
 
         [ForeignKey("TeamId")]
         public virtual Team Team { get; set; }
-        // TODO: Rodné číslo, rodinná anamnéza, post, alt post (tabulka)
+
+        public int? PositionId { get; set; }
+        [ForeignKey("PositionId")]
+        public virtual Position Position { get; set; }
+
+        public int? AltPositionId { get; set; }
+        [ForeignKey("AltPositionId")]
+        public virtual Position AltPosition { get; set; }
+        
+        // TODO: Rodné číslo, rodinná anamnéza
 
         public virtual ICollection<Absence> Absences { get; set; } = new HashSet<Absence>();
 
