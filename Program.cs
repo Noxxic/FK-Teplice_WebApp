@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using FKTeplice.Extensions;
 
 namespace FKTeplice
 {
@@ -14,7 +15,12 @@ namespace FKTeplice
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var arguments = args.ToList();
+            bool seed = arguments.RemoveAll(x => x == "seed") > 0;
+            
+            BuildWebHost(arguments.ToArray())
+                        .SeedDatabase(seed)
+                        .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
