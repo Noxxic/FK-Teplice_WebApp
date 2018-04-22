@@ -9,6 +9,8 @@ using FKTeplice.Models.HomeViewModels;
 using FKTeplice.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using FKTeplice.BusinessModels.PhysioParser;
 
 namespace FKTeplice.Controllers
 {
@@ -22,12 +24,20 @@ namespace FKTeplice.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public IActionResult Index()
         {
             var model = new IndexHomeModel();
             model.TeamsCount = _context.Teams.Count();
             model.PlayersCount = _context.Players.Count();
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Physio(IFormFile File)
+        {
+            PhysioParser.FromExcel(File, _context);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Error()
