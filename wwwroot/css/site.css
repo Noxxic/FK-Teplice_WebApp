@@ -1,0 +1,10 @@
+.widget-user-2 .widget-user-image > img {
+    max-height: 160px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+}
+
+.widget-user-2 .widget-user-username, .widget-user-2 .widget-user-desc{
+    margin-left: 180px;
+}

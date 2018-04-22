@@ -10,6 +10,17 @@ namespace FKTeplice.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Player> Players { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<Absence> Absences { get; set; }
+        public DbSet<Injury> Injuries { get; set; }
+        public DbSet<PlayerMatch> PlayerMatches { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Competition> Competitions { get; set; }
+        public DbSet<Physio> Physios { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

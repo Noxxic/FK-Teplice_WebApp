@@ -5,28 +5,39 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FKTeplice.Models;
+using FKTeplice.Models.HomeViewModels;
+using FKTeplice.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using FKTeplice.BusinessModels.PhysioParser;
 
 namespace FKTeplice.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext _context) {
+            this._context = _context;
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var model = new IndexHomeModel();
+            model.TeamsCount = _context.Teams.Count();
+            model.PlayersCount = _context.Players.Count();
+            return View(model);
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public async Task<IActionResult> Physio(IFormFile File)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            PhysioParser.FromExcel(File, _context);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Error()

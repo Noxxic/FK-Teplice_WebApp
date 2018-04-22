@@ -1,24 +1,16 @@
-@model IEnumerable<string>
+@model IEnumerable<Team>
 
 <aside class="main-sidebar">
     <section class="sidebar">
 
         <ul class="sidebar-menu" data-widget="tree">
-            @foreach (var item in Model)
+            @foreach (var team in Model)
             {
-                <li class="treeview">
-                    <a href="#">
+                <li>
+                    <a asp-controller="Team" asp-action="Show" asp-route-id="@team.Id">
                         <i class="fa fa-users"></i>
-                        <span>Tým XYZ</span>
+                        <span>@team.Name</span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-user"></i>Jméno Příjmení</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>Jméno Příjmení</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>Jméno Příjmení</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>Jméno Příjmení</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>Jméno Příjmení</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>Jméno Příjmení</a></li>
-                    </ul>
                 </li>    
             }
         </ul>

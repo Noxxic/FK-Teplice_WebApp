@@ -1,0 +1,11 @@
+@using FKTeplice.Models.PlayerViewModels
+@model UpdateStorePlayerModel
+
+@{
+    ViewData["Title"] = $"Upravit hráče {Model.FirstName} {Model.LastName}";
+}
+
+<form enctype="multipart/form-data" asp-controller="Player" asp-action="Update" method="Post">
+    <input class="hidden" asp-for="Id" />
+    @await Html.PartialAsync("Form", Model)
+</form>

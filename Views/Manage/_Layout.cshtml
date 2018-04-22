@@ -2,20 +2,27 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Manage your account</h2>
-
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            @await Html.PartialAsync("_ManageNav")
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Nastavení účtu</h3>
+            </div>
+            <div class="box-body dl-horizontal">
+                <div class="col-md-3">
+                    @await Html.PartialAsync("_ManageNav")
+                </div>
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="box-footer"></div>
         </div>
     </div>
 </div>
+
+
+
 
 @section Scripts {
     @RenderSection("Scripts", required: false)

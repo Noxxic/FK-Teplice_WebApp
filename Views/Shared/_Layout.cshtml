@@ -29,7 +29,6 @@
 
 	<body class="fixed hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
-			<div class="container-fluid">
 			<header class="main-header">
 
 				<a href="/" class="logo">
@@ -38,19 +37,39 @@
 				</a>
 
 				<nav class="navbar navbar-static-top">
-					<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="#" class="sidebar-toggle pull-left" data-toggle="push-menu" role="button">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
 
-					@await Component.InvokeAsync(nameof(TopMenu))
-				
-					@await Html.PartialAsync("_LoginPartial")
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+								<i class="fa fa-bars"></i>
+							</button>
+						</div>
+
+						<div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+							<form 
+								class="navbar-form navbar-left" 
+								role="search" 
+								asp-controller="Search" 
+								asp-action="Index" 
+								method="GET"
+							>
+								<div class="input-group">
+									<input type="text" name="q" class="form-control" placeholder="Hledej">
+								</div>
+							</form>
+
+							@await Component.InvokeAsync(nameof(TopMenu))
+							@await Html.PartialAsync("_LoginPartial")
+						</div>
+					</div>
 				</nav>
 			</header>
-			</div>
 			@await Component.InvokeAsync(nameof(SideMenu))
 
 			<div class="content-wrapper">
@@ -60,15 +79,21 @@
 			</div>
 
 			<footer class="main-footer">
-
+				Copyrighty a tak 2018
 			</footer>
 
 		</div>
 
 		<environment include="Development"> 
+			<script src="~/lib/jquery/dist/jquery.js"></script>
+			<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+			<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 			<script src="~/dist/main.js" asp-append-version="true"></script>
 		</environment>
 		<environment exclude="Development">
+			<script src="~/lib/jquery/dist/jquery.js"></script>
+			<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+			<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 			<script src="~/dist/main.js" asp-append-version="true"></script>
 		</environment>
 
