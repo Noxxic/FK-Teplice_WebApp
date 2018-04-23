@@ -10,13 +10,13 @@ Materiály ze [setkání](https://github.com/Noxxic/FK-Teplice_WebApp/blob/maste
 
 1. Přihlašování :heavy_check_mark:
 2. Návrh databáze :heavy_check_mark:
-3.
-4.
-5.
-6.
-7.
-8.
-9.
+3. Přidávání hráčů :heavy_check_mark:
+4. Odebírání hráčů :heavy_check_mark:
+5. Model hráčů :heavy_check_mark:
+6. Model zranění :heavy_check_mark:
+7. Model zápasů :heavy_check_mark:
+8. Model tréninků :heavy_check_mark:
+9. Základní layout :heavy_check_mark:
 10.
 
 :heavy_check_mark: :x: 
