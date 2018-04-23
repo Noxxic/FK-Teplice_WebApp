@@ -6,17 +6,23 @@ Materiály ze [setkání](https://github.com/Noxxic/FK-Teplice_WebApp/blob/maste
 
 1.  Návrh GUI 
 
-## Seznam úkolů:
+## Průběh projektu:
 
-1. Přihlašování :heavy_check_mark:
-2. Návrh databáze :heavy_check_mark:
-3. Přidávání hráčů :heavy_check_mark:
-4. Odebírání hráčů :heavy_check_mark:
-5. Model hráčů :heavy_check_mark:
-6. Model zranění :heavy_check_mark:
-7. Model zápasů :heavy_check_mark:
-8. Model tréninků :heavy_check_mark:
-9. Základní layout :heavy_check_mark:
-10.
+:heavy_check_mark: Přihlašování
+:heavy_check_mark: Návrh databáze
+:heavy_check_mark: Přidávání hráčů
+:heavy_check_mark: Odebírání hráčů
+:heavy_check_mark: Model hráčů
+:heavy_check_mark: Model zranění
+:heavy_check_mark: Model zápasů
+:heavy_check_mark: Model tréninků
+:heavy_check_mark: Základní layout
+:heavy_check_mark: Import dat z Excelu
+:heavy_check_mark: Nastavení účtů
+:heavy_check_mark: Propojení skrze Entity framework
+:x: Vykreslování grafů pomocí ChartJS
+:x: Nasazení aplikace na server
+:x: Testování
+:x: Předání
 
 :heavy_check_mark: :x: 
