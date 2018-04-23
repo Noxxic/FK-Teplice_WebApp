@@ -8,7 +8,7 @@ Materiály ze [setkání](https://github.com/Noxxic/FK-Teplice_WebApp/blob/maste
 
 ## Průběh projektu:
 
-:heavy_check_mark: Přihlašování
+:heavy_check_mark: Přihlašování  
 :heavy_check_mark: Návrh databáze
 :heavy_check_mark: Přidávání hráčů
 :heavy_check_mark: Odebírání hráčů
