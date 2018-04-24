@@ -5,24 +5,24 @@ Materiály ze [setkání](https://github.com/Noxxic/FK-Teplice_WebApp/blob/maste
 
 ## Průběh projektu:
 Obrazovky  
-1. Login  
+1. Login :lock:  
 1.1    :heavy_check_mark: Hashování hesla  
 1.2    :heavy_check_mark: Přihlášení skrze email  
-2. Admin  
+2. Admin :wrench:  
 2.1    :heavy_check_mark: Vytváření uživatelů  
 2.2    :heavy_check_mark: Nastavení rolí uživatele  
-3. Manager  
+3. Manager :computer:  
 3.1    :heavy_check_mark: Upload smlouvy  
 3.2    :heavy_check_mark: Upozornění na smlouvy  
 3.3    :heavy_check_mark: Zobrazení smluv  
-4. Lékař  
+4. Lékař :pill:  
 4.1 :heavy_check_mark: Upload zprávy  
 4.2 :heavy_check_mark: Zobrazení nahraných souborů  
-5. Fitness  
+5. Fitness :clipboard:  
 5.1    :heavy_check_mark: Import dat z Excel  
 5.2    :heavy_check_mark: Vykreslení grafů  
 5.3    :heavy_check_mark: Správa výsledků kondičních testů  
-6. Trenér  
+6. Trenér :soccer:  
 
 Ostatní
 :heavy_check_mark: Přihlašování  
