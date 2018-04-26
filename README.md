@@ -9,8 +9,8 @@ Obrazovky
 1.1    :heavy_check_mark: Hashování hesla  
 1.2    :heavy_check_mark: Přihlášení skrze email  
 2. Admin :wrench:  
-2.1    :heavy_check_mark: Vytváření uživatelů  
-2.2    :heavy_check_mark: Nastavení rolí uživatele  
+2.1    :x: Vytváření uživatelů  
+2.2     Nastavení rolí uživatele  
 3. Manager :computer:  
 3.1    :heavy_check_mark: Upload smlouvy  
 3.2    :heavy_check_mark: Upozornění na smlouvy  
@@ -19,10 +19,11 @@ Obrazovky
 4.1 :heavy_check_mark: Upload zprávy  
 4.2 :heavy_check_mark: Zobrazení nahraných souborů  
 5. Fitness :clipboard:  
-5.1    :heavy_check_mark: Import dat z Excel  
-5.2    :heavy_check_mark: Vykreslení grafů  
-5.3    :heavy_check_mark: Správa výsledků kondičních testů  
+5.1    :x: Import dat z Excel  
+5.2    :x: Vykreslení grafů  
+5.3    :x: Správa výsledků kondičních testů  
 6. Trenér :soccer:  
+6.1 :x: Správa zápasů
 
 Ostatní
 :heavy_check_mark: Přihlašování  
